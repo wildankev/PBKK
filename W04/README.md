@@ -106,7 +106,6 @@ public partial class MainWindow : Window
     {
         // Data awal mahasiswa untuk demo tampilan
         lstMahasiswa.Items.Add("5025241265 | A. Wildan Kevin Assyauqi | Teknik Informatika | Laki-laki");
-        lstMahasiswa.Items.Add("5025241047 | Kinanti Ayu Caesandria | Teknik Informatika | Perempuan");
     }
 
     private void BtnSimpan_Click(object sender, RoutedEventArgs e)
