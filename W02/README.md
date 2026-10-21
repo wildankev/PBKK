@@ -17,14 +17,10 @@ Langkah awal adalah memastikan .NET SDK telah terpasang pada komputer dan dapat 
 ```powershell
 dotnet --version
 ```
-Untuk menguji program pertama "Hello World":
-```csharp
-Console.WriteLine("Hello, World!");
-```
 
-- **Screenshot Verifikasi .NET & Hello World**
+- **Screenshot Verifikasi .NET**
   
-  ![Verifikasi .NET & Hello World](assets/01_hello_world.png)
+  ![Verifikasi .NET & Hello World](assets/01_verifikasi_dotnet.png)
 
 ---
 
