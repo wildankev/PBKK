@@ -8,8 +8,15 @@ namespace StudentRegistrationApp.Data
 {
     public class StudentRepository
     {
-        private const string MasterConnectionString = "Server=(localdb)\\MSSQLLocalDB;Database=master;Trusted_Connection=True;TrustServerCertificate=True;Connect Timeout=3;";
-        private const string DatabaseConnectionString = "Server=(localdb)\\MSSQLLocalDB;Database=StudentRegistrationDB;Trusted_Connection=True;TrustServerCertificate=True;Connect Timeout=3;";
+        private static readonly string[] CandidateServers = new[]
+        {
+            "localhost\\SQLEXPRESS",
+            "DESKTOP-VSVMC5P\\SQLEXPRESS",
+            ".\\SQLEXPRESS",
+            "(localdb)\\MSSQLLocalDB"
+        };
+
+        private string _activeConnectionString = "Server=localhost\\SQLEXPRESS;Database=StudentRegistrationDB;Trusted_Connection=True;TrustServerCertificate=True;Connect Timeout=3;";
 
         public bool IsConnectedToDatabase { get; private set; }
 
@@ -52,73 +59,82 @@ namespace StudentRegistrationApp.Data
 
         private void TryInitializeDatabase()
         {
-            try
+            foreach (var server in CandidateServers)
             {
-                using (var masterConn = new SqlConnection(MasterConnectionString))
+                try
                 {
-                    masterConn.Open();
-                    using var checkCmd = new SqlCommand(
-                        "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'StudentRegistrationDB') " +
-                        "CREATE DATABASE StudentRegistrationDB;", masterConn);
-                    checkCmd.ExecuteNonQuery();
-                }
+                    string masterConnStr = $"Server={server};Database=master;Trusted_Connection=True;TrustServerCertificate=True;Connect Timeout=2;";
+                    using (var masterConn = new SqlConnection(masterConnStr))
+                    {
+                        masterConn.Open();
+                        using var checkCmd = new SqlCommand(
+                            "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'StudentRegistrationDB') " +
+                            "CREATE DATABASE StudentRegistrationDB;", masterConn);
+                        checkCmd.ExecuteNonQuery();
+                    }
 
-                using (var dbConn = new SqlConnection(DatabaseConnectionString))
+                    string dbConnStr = $"Server={server};Database=StudentRegistrationDB;Trusted_Connection=True;TrustServerCertificate=True;Connect Timeout=2;";
+                    using (var dbConn = new SqlConnection(dbConnStr))
+                    {
+                        dbConn.Open();
+
+                        string ddl = @"
+                            IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Programs')
+                            BEGIN
+                                CREATE TABLE dbo.Programs (
+                                    ProgramId INT IDENTITY(1,1) PRIMARY KEY,
+                                    ProgramCode VARCHAR(20) UNIQUE NOT NULL,
+                                    ProgramName NVARCHAR(100) NOT NULL,
+                                    IsActive BIT NOT NULL DEFAULT 1,
+                                    CreatedAt DATETIME NOT NULL DEFAULT GETDATE()
+                                );
+                                INSERT INTO dbo.Programs (ProgramCode, ProgramName, IsActive)
+                                VALUES
+                                    ('IF', 'Teknik Informatika', 1),
+                                    ('SI', 'Sistem Informasi', 1),
+                                    ('TE', 'Teknik Elektro', 1),
+                                    ('TI', 'Teknik Industri', 1),
+                                    ('TS', 'Teknik Sipil', 1);
+                            END;
+
+                            IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Students')
+                            BEGIN
+                                CREATE TABLE dbo.Students (
+                                    StudentId INT IDENTITY(1,1) PRIMARY KEY,
+                                    NIM VARCHAR(20) UNIQUE NOT NULL,
+                                    FullName NVARCHAR(150) NOT NULL,
+                                    Email VARCHAR(100) NOT NULL,
+                                    Gender NVARCHAR(20) NOT NULL,
+                                    BirthDate DATE NULL,
+                                    PhoneNumber VARCHAR(25) NULL,
+                                    Address NVARCHAR(255) NULL,
+                                    ProgramId INT NOT NULL,
+                                    CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+                                    CONSTRAINT FK_Students_Programs FOREIGN KEY (ProgramId)
+                                        REFERENCES dbo.Programs(ProgramId)
+                                        ON UPDATE CASCADE
+                                        ON DELETE NO ACTION
+                                );
+                                INSERT INTO dbo.Students (NIM, FullName, Email, Gender, BirthDate, PhoneNumber, Address, ProgramId)
+                                VALUES
+                                    ('5025241265', 'A. Wildan Kevin Assyauqi', '5025241265@student.its.ac.id', 'Laki-laki', '2004-05-15', '081234567890', 'Surabaya, Jawa Timur', 1);
+                            END;";
+
+                        using var ddlCmd = new SqlCommand(ddl, dbConn);
+                        ddlCmd.ExecuteNonQuery();
+                    }
+
+                    _activeConnectionString = dbConnStr;
+                    IsConnectedToDatabase = true;
+                    return;
+                }
+                catch
                 {
-                    dbConn.Open();
-
-                    string ddl = @"
-                        IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Programs')
-                        BEGIN
-                            CREATE TABLE dbo.Programs (
-                                ProgramId INT IDENTITY(1,1) PRIMARY KEY,
-                                ProgramCode VARCHAR(20) UNIQUE NOT NULL,
-                                ProgramName NVARCHAR(100) NOT NULL,
-                                IsActive BIT NOT NULL DEFAULT 1,
-                                CreatedAt DATETIME NOT NULL DEFAULT GETDATE()
-                            );
-                            INSERT INTO dbo.Programs (ProgramCode, ProgramName, IsActive)
-                            VALUES
-                                ('IF', 'Teknik Informatika', 1),
-                                ('SI', 'Sistem Informasi', 1),
-                                ('TE', 'Teknik Elektro', 1),
-                                ('TI', 'Teknik Industri', 1),
-                                ('TS', 'Teknik Sipil', 1);
-                        END;
-
-                        IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Students')
-                        BEGIN
-                            CREATE TABLE dbo.Students (
-                                StudentId INT IDENTITY(1,1) PRIMARY KEY,
-                                NIM VARCHAR(20) UNIQUE NOT NULL,
-                                FullName NVARCHAR(150) NOT NULL,
-                                Email VARCHAR(100) NOT NULL,
-                                Gender NVARCHAR(20) NOT NULL,
-                                BirthDate DATE NULL,
-                                PhoneNumber VARCHAR(25) NULL,
-                                Address NVARCHAR(255) NULL,
-                                ProgramId INT NOT NULL,
-                                CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
-                                CONSTRAINT FK_Students_Programs FOREIGN KEY (ProgramId)
-                                    REFERENCES dbo.Programs(ProgramId)
-                                    ON UPDATE CASCADE
-                                    ON DELETE NO ACTION
-                            );
-                            INSERT INTO dbo.Students (NIM, FullName, Email, Gender, BirthDate, PhoneNumber, Address, ProgramId)
-                            VALUES
-                                ('5025241265', 'A. Wildan Kevin Assyauqi', '5025241265@student.its.ac.id', 'Laki-laki', '2004-05-15', '081234567890', 'Surabaya, Jawa Timur', 1);
-                        END;";
-
-                    using var ddlCmd = new SqlCommand(ddl, dbConn);
-                    ddlCmd.ExecuteNonQuery();
+                    // Try next candidate server
                 }
+            }
 
-                IsConnectedToDatabase = true;
-            }
-            catch
-            {
-                IsConnectedToDatabase = false;
-            }
+            IsConnectedToDatabase = false;
         }
 
         public List<ProgramStudy> GetPrograms()
@@ -130,7 +146,7 @@ namespace StudentRegistrationApp.Data
 
             try
             {
-                using var conn = new SqlConnection(DatabaseConnectionString);
+                using var conn = new SqlConnection(_activeConnectionString);
                 conn.Open();
                 using var cmd = new SqlCommand("SELECT ProgramId, ProgramCode, ProgramName, IsActive FROM dbo.Programs WHERE IsActive = 1 ORDER BY ProgramCode ASC", conn);
                 using var reader = cmd.ExecuteReader();
@@ -177,7 +193,7 @@ namespace StudentRegistrationApp.Data
 
             try
             {
-                using var conn = new SqlConnection(DatabaseConnectionString);
+                using var conn = new SqlConnection(_activeConnectionString);
                 conn.Open();
 
                 string sql = @"
@@ -233,7 +249,7 @@ namespace StudentRegistrationApp.Data
 
             try
             {
-                using var conn = new SqlConnection(DatabaseConnectionString);
+                using var conn = new SqlConnection(_activeConnectionString);
                 conn.Open();
                 using var cmd = new SqlCommand("SELECT COUNT(1) FROM dbo.Students WHERE NIM = @nim AND StudentId != @excludeId", conn);
                 cmd.Parameters.Add("@nim", SqlDbType.VarChar, 20).Value = nim;
@@ -271,7 +287,7 @@ namespace StudentRegistrationApp.Data
 
             try
             {
-                using var conn = new SqlConnection(DatabaseConnectionString);
+                using var conn = new SqlConnection(_activeConnectionString);
                 conn.Open();
                 string sql = @"
                     INSERT INTO dbo.Students (NIM, FullName, Email, Gender, BirthDate, PhoneNumber, Address, ProgramId, CreatedAt)
@@ -331,7 +347,7 @@ namespace StudentRegistrationApp.Data
 
             try
             {
-                using var conn = new SqlConnection(DatabaseConnectionString);
+                using var conn = new SqlConnection(_activeConnectionString);
                 conn.Open();
                 string sql = @"
                     UPDATE dbo.Students
@@ -384,7 +400,7 @@ namespace StudentRegistrationApp.Data
 
             try
             {
-                using var conn = new SqlConnection(DatabaseConnectionString);
+                using var conn = new SqlConnection(_activeConnectionString);
                 conn.Open();
                 using var cmd = new SqlCommand("DELETE FROM dbo.Students WHERE StudentId = @id;", conn);
                 cmd.Parameters.Add("@id", SqlDbType.Int).Value = studentId;
