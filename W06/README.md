@@ -30,11 +30,12 @@ W06/
 ├── assets/
 │   ├── 00_struktur_project.png
 │   ├── 01_database_setup.png
-│   ├── 02_tampilan_utama.png
-│   ├── 03_tambah_data.png
-│   ├── 04_update_data.png
-│   ├── 05_hapus_data.png
-│   └── 06_pencarian_filter.png
+│   ├── 02_object_explorer_tabel.png
+│   ├── 03_tampilan_utama.png
+│   ├── 04_tambah_data.png
+│   ├── 05_update_data.png
+│   ├── 06_hapus_data.png
+│   └── 07_pencarian_filter.png
 ├── Data/
 │   └── StudentRepository.cs
 ├── Models/
@@ -307,37 +308,50 @@ Antarmuka pengguna didesain dengan konsep **Rich UI** yang terbagi dalam kompone
 
 ## Preview dan Hasil Eksekusi
 
-Berikut adalah tangkapan layar pengujian sistem pendaftaran mahasiswa pada SQL Server dan WPF:
+Berikut adalah tangkapan layar pengujian yang dibagi berdasarkan masing-masing bagian *Hands-on*:
 
-### 1. Eksekusi Skrip SQL & Database Setup (Hands-on 1)
-Pembuatan basis data `StudentRegistrationDB`, tabel relasional `Programs` dan `Students`, serta pengujian kueri `INNER JOIN` di SQL Server Management Studio (SSMS).
+---
 
-![Database Setup](assets/01_database_setup.png)
+### Bagian 1 — Hands-on 1: Database SQL Server
 
-### 2. Tampilan Utama Aplikasi (Hands-on 2)
-Tampilan awal saat aplikasi dijalankan, memuat status koneksi database, kartu ringkasan data, formulir pendaftaran, dan data awal mahasiswa pada `DataGrid`.
+#### 1. Eksekusi Skrip SQL & Pengujian Kueri INNER JOIN
+Eksekusi file skrip `database.sql` di SQL Server Management Studio (SSMS) yang berhasil membuat database `StudentRegistrationDB`, membuat tabel `Programs` dan `Students`, melakukan *seeding* data awal, serta menampilkan hasil kueri relasi `INNER JOIN`.
 
-![Tampilan Utama](assets/02_tampilan_utama.png)
+![Eksekusi Skrip SQL](assets/01_database_setup.png)
 
-### 3. Pendaftaran Mahasiswa Baru (Create)
-Pengisian formulir pendaftaran mahasiswa baru dengan memilih program studi relasional, data berhasil tersimpan ke dalam tabel database SQL Server.
+#### 2. Struktur Tabel & Database di Object Explorer
+Tampilan hierarki database pada panel *Object Explorer* di SSMS yang memperlihatkan tabel master `dbo.Programs`, tabel relasi `dbo.Students`, serta kolom dan *keys* yang telah terbentuk.
 
-![Tambah Data](assets/03_tambah_data.png)
+![Struktur Tabel Object Explorer](assets/02_object_explorer_tabel.png)
 
-### 4. Pembaruan Data Mahasiswa (Update)
-Memilih baris mahasiswa pada `DataGrid` untuk mengisi form input secara otomatis, mengubah informasi mahasiswa, dan menyimpan pembaruan data.
+---
 
-![Update Data](assets/04_update_data.png)
+### Bagian 2 — Hands-on 2: Integrasi WPF Desktop & ADO.NET
 
-### 5. Penghapusan Data Mahasiswa (Delete)
+#### 1. Tampilan Utama Aplikasi (Read / Display Data)
+Tampilan awal saat aplikasi dijalankan, memuat status koneksi database, kartu ringkasan data, formulir pendaftaran di sisi kiri, dan data awal mahasiswa yang ditarik dari SQL Server pada `DataGrid`.
+
+![Tampilan Utama](assets/03_tampilan_utama.png)
+
+#### 2. Pendaftaran Mahasiswa Baru (Create)
+Pengisian formulir pendaftaran mahasiswa baru dengan memilih program studi dari dropdown relasional, data berhasil tersimpan ke dalam tabel database SQL Server via ADO.NET.
+
+![Tambah Data](assets/04_tambah_data.png)
+
+#### 3. Pembaruan Data Mahasiswa (Update)
+Memilih baris mahasiswa pada `DataGrid` untuk mengisi formulir input secara otomatis, melakukan perubahan informasi, dan menyimpan pembaruan ke database.
+
+![Update Data](assets/05_update_data.png)
+
+#### 4. Penghapusan Data Mahasiswa (Delete)
 Menghapus data mahasiswa dari database melalui tombol Hapus pada baris tabel yang dilengkapi dialog konfirmasi keamanan data.
 
-![Hapus Data](assets/05_hapus_data.png)
+![Hapus Data](assets/06_hapus_data.png)
 
-### 6. Pencarian dan Filter Data (Search / Filter)
+#### 5. Pencarian dan Filter Data (Search / Filter)
 Penyaringan data mahasiswa secara interaktif berdasarkan kata kunci (NIM, Nama, Email) maupun filter spesifik program studi.
 
-![Pencarian dan Filter](assets/06_pencarian_filter.png)
+![Pencarian dan Filter](assets/07_pencarian_filter.png)
 
 Terimakasih.
 
