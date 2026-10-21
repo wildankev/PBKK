@@ -21,8 +21,6 @@ BEGIN
     -- Data Awal (Seeding)
     INSERT INTO dbo.Students (NIM, Nama, Jurusan, Gender, Email)
     VALUES
-        ('5025241265', 'A. Wildan Kevin Assyauqi', 'Teknik Informatika', 'Laki-laki', 'wildankev@student.its.ac.id'),
-        ('5025241033', 'Ferdian Ardra Hafizhan', 'Teknik Informatika', 'Laki-laki', 'ferdian@student.its.ac.id'),
-        ('5025241041', 'Salwa Nadia Maharani', 'Sistem Informasi', 'Perempuan', 'salwa@student.its.ac.id');
+        ('5025241265', 'A. Wildan Kevin Assyauqi', 'Teknik Informatika', 'Laki-laki', '5025241265@student.its.ac.id');
 END;
 GO

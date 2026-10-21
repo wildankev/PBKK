@@ -45,9 +45,7 @@ namespace StudentManager.Data
                         );
                         INSERT INTO dbo.Students (NIM, Nama, Jurusan, Gender, Email)
                         VALUES
-                            ('5025241265', 'A. Wildan Kevin Assyauqi', 'Teknik Informatika', 'Laki-laki', 'wildankev@student.its.ac.id'),
-                            ('5025241033', 'Ferdian Ardra Hafizhan', 'Teknik Informatika', 'Laki-laki', 'ferdian@student.its.ac.id'),
-                            ('5025241041', 'Salwa Nadia Maharani', 'Sistem Informasi', 'Perempuan', 'salwa@student.its.ac.id');
+                            ('5025241265', 'A. Wildan Kevin Assyauqi', 'Teknik Informatika', 'Laki-laki', '5025241265@student.its.ac.id');
                     END;", connection);
                 command.ExecuteNonQuery();
             }
@@ -69,25 +67,7 @@ namespace StudentManager.Data
                 Nama = "A. Wildan Kevin Assyauqi",
                 Jurusan = "Teknik Informatika",
                 Gender = "Laki-laki",
-                Email = "wildankev@student.its.ac.id"
-            });
-            _fallbackMemoryData.Add(new Student
-            {
-                Id = _memoryNextId++,
-                NIM = "5025241033",
-                Nama = "Ferdian Ardra Hafizhan",
-                Jurusan = "Teknik Informatika",
-                Gender = "Laki-laki",
-                Email = "ferdian@student.its.ac.id"
-            });
-            _fallbackMemoryData.Add(new Student
-            {
-                Id = _memoryNextId++,
-                NIM = "5025241041",
-                Nama = "Salwa Nadia Maharani",
-                Jurusan = "Sistem Informasi",
-                Gender = "Perempuan",
-                Email = "salwa@student.its.ac.id"
+                Email = "5025241265@student.its.ac.id"
             });
         }
 
