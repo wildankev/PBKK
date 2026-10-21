@@ -9,13 +9,13 @@ Dokumentasi tugas pemrograman mingguan mata kuliah **Pemrograman Berbasis Kerang
 Tugas pertemuan ke-6 ini berfokus pada integrasi basis data relasional **Microsoft SQL Server** dengan aplikasi desktop berbasis **Windows Presentation Foundation (WPF)** menggunakan pustaka konektivitas **ADO.NET** (`Microsoft.Data.SqlClient`). 
 
 Pengerjaan tugas ini terbagi menjadi dua bagian utama:
-1. **Hands-on 1 — Membuat Database dengan SQL Server:**
+1. **Hands-on 1 - Membuat Database dengan SQL Server:**
    - Merancang basis data relasional `StudentRegistrationDB`.
    - Membuat tabel master `Programs` (Program Studi) dan tabel transaksi `Students` (Pendaftaran Mahasiswa) dengan relasi *One-to-Many* ($1:N$).
    - Menerapkan batasan integritas data (*Primary Key*, *Foreign Key*, *Unique Constraint*, *Default Values*).
    - Memasukkan data awal (*seed data*) dan menguji relasi antar tabel menggunakan kueri `INNER JOIN`.
 
-2. **Hands-on 2 — Integrasi WPF dengan SQL Server menggunakan ADO.NET:**
+2. **Hands-on 2 - Integrasi WPF dengan SQL Server menggunakan ADO.NET:**
    - Membangun aplikasi desktop modern menggunakan C# dan .NET 8 WPF.
    - Menghubungkan antarmuka grafis ke SQL Server melalui arsitektur terpisah *Repository Pattern* dan pola desain **MVVM (Model-View-ViewModel)**.
    - Mengimplementasikan operasi lengkap CRUD (*Create, Read, Update, Delete*) serta fitur pencarian data secara *real-time*.
@@ -28,14 +28,6 @@ Pengerjaan tugas ini terbagi menjadi dua bagian utama:
 ```text
 W06/
 ├── assets/
-│   ├── 00_struktur_project.png
-│   ├── 01_database_setup.png
-│   ├── 02_object_explorer_tabel.png
-│   ├── 03_tampilan_utama.png
-│   ├── 04_tambah_data.png
-│   ├── 05_update_data.png
-│   ├── 06_hapus_data.png
-│   └── 07_pencarian_filter.png
 ├── Data/
 │   └── StudentRepository.cs
 ├── Models/
@@ -312,7 +304,7 @@ Berikut adalah tangkapan layar pengujian yang dibagi berdasarkan masing-masing b
 
 ---
 
-### Bagian 1 — Hands-on 1: Database SQL Server
+### Bagian 1 - Hands-on 1: Database SQL Server
 
 #### 1. Eksekusi Skrip SQL & Pengujian Kueri INNER JOIN
 Eksekusi file skrip `database.sql` di SQL Server Management Studio (SSMS) yang berhasil membuat database `StudentRegistrationDB`, membuat tabel `Programs` dan `Students`, melakukan *seeding* data awal, serta menampilkan hasil kueri relasi `INNER JOIN`.
@@ -326,7 +318,7 @@ Tampilan hierarki database pada panel *Object Explorer* di SSMS yang memperlihat
 
 ---
 
-### Bagian 2 — Hands-on 2: Integrasi WPF Desktop & ADO.NET
+### Bagian 2 - Hands-on 2: Integrasi WPF Desktop & ADO.NET
 
 #### 1. Tampilan Utama Aplikasi (Read / Display Data)
 Tampilan awal saat aplikasi dijalankan, memuat status koneksi database, kartu ringkasan data, formulir pendaftaran di sisi kiri, dan data awal mahasiswa yang ditarik dari SQL Server pada `DataGrid`.

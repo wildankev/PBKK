@@ -1,9 +1,7 @@
--- =====================================================================
 -- Tugas PBKK Pertemuan 6: Hands-on 1 - Database SQL Server
 -- Nama  : A. Wildan Kevin Assyauqi
 -- NRP   : 5025241265
 -- Kelas : Pemrograman Berbasis Kerangka Kerja - C
--- =====================================================================
 
 -- 1. Buat Database
 IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'StudentRegistrationDB')
