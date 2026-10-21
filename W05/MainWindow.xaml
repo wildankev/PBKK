@@ -1,0 +1,258 @@
+<Window x:Class="StudentManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:StudentManager.ViewModels"
+        Title="Student Management System (MVVM) - PBKK C"
+        Height="660"
+        Width="1020"
+        WindowStartupLocation="CenterScreen"
+        Background="#F1F5F9">
+
+    <Window.DataContext>
+        <vm:StudentViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <!-- Style Tombol Rounded Modern -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="6"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Opacity" Value="0.88"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Opacity" Value="0.75"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Style Input Form -->
+        <Style x:Key="FormInputStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="8,0"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderBrush" Value="#CBD5E1"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- Header -->
+            <RowDefinition Height="Auto"/> <!-- Cards Statistik -->
+            <RowDefinition Height="*"/>    <!-- Content CRUD -->
+            <RowDefinition Height="Auto"/> <!-- Status Bar -->
+        </Grid.RowDefinitions>
+
+        <!-- 1. HEADER -->
+        <Grid Grid.Row="0" Margin="0,0,0,16">
+            <StackPanel>
+                <TextBlock Text="STUDENT MANAGEMENT SYSTEM"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="#0F172A"/>
+                <TextBlock Text="Aplikasi Pengelolaan Data Mahasiswa Berbasis WPF, MVVM, dan SQL Server LocalDB"
+                           FontSize="12"
+                           Foreground="#64748B"
+                           Margin="0,2,0,0"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- 2. KARTU STATISTIK -->
+        <Grid Grid.Row="1" Margin="0,0,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="12"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="12"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="12"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Card 1: Total Mahasiswa -->
+            <Border Grid.Column="0" Background="White" CornerRadius="8" Padding="14,10" BorderBrush="#E2E8F0" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="TOTAL MAHASISWA" FontSize="11" FontWeight="SemiBold" Foreground="#64748B"/>
+                    <TextBlock Text="{Binding TotalStudents}" FontSize="24" FontWeight="Bold" Foreground="#0284C7" Margin="0,4,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Card 2: Informatika -->
+            <Border Grid.Column="2" Background="White" CornerRadius="8" Padding="14,10" BorderBrush="#E2E8F0" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="TEKNIK INFORMATIKA" FontSize="11" FontWeight="SemiBold" Foreground="#64748B"/>
+                    <TextBlock Text="{Binding TotalInformatika}" FontSize="24" FontWeight="Bold" Foreground="#16A34A" Margin="0,4,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Card 3: Sistem Informasi -->
+            <Border Grid.Column="4" Background="White" CornerRadius="8" Padding="14,10" BorderBrush="#E2E8F0" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="SISTEM INFORMASI" FontSize="11" FontWeight="SemiBold" Foreground="#64748B"/>
+                    <TextBlock Text="{Binding TotalSistemInformasi}" FontSize="24" FontWeight="Bold" Foreground="#9333EA" Margin="0,4,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Card 4: Status Database -->
+            <Border Grid.Column="6" Background="White" CornerRadius="8" Padding="14,10" BorderBrush="#E2E8F0" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="STATUS KONEKSI" FontSize="11" FontWeight="SemiBold" Foreground="#64748B"/>
+                    <TextBlock Text="{Binding DatabaseStatus}" FontSize="13" FontWeight="Bold" Foreground="#D97706" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- 3. KONTEN UTAMA: FORM INPUT & DATAGRID -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- FORM INPUT (KIRI) -->
+            <Border Grid.Column="0" Background="White" CornerRadius="8" Padding="18" BorderBrush="#E2E8F0" BorderThickness="1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <TextBlock Text="Form Mahasiswa" FontSize="16" FontWeight="Bold" Foreground="#1E293B" Margin="0,0,0,14"/>
+
+                        <TextBlock Text="NIM / NRP *" FontWeight="SemiBold" Foreground="#475569" Margin="0,0,0,4"/>
+                        <TextBox Style="{StaticResource FormInputStyle}" Text="{Binding CurrentStudent.NIM, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Nama Lengkap *" FontWeight="SemiBold" Foreground="#475569" Margin="0,0,0,4"/>
+                        <TextBox Style="{StaticResource FormInputStyle}" Text="{Binding CurrentStudent.Nama, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Program Studi *" FontWeight="SemiBold" Foreground="#475569" Margin="0,0,0,4"/>
+                        <ComboBox Height="32" VerticalContentAlignment="Center" Background="White"
+                                  ItemsSource="{Binding JurusanList}"
+                                  SelectedItem="{Binding CurrentStudent.Jurusan}"
+                                  Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Jenis Kelamin *" FontWeight="SemiBold" Foreground="#475569" Margin="0,0,0,4"/>
+                        <ComboBox Height="32" VerticalContentAlignment="Center" Background="White"
+                                  ItemsSource="{Binding GenderList}"
+                                  SelectedItem="{Binding CurrentStudent.Gender}"
+                                  Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Email Mahasiswa" FontWeight="SemiBold" Foreground="#475569" Margin="0,0,0,4"/>
+                        <TextBox Style="{StaticResource FormInputStyle}" Text="{Binding CurrentStudent.Email, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,16"/>
+
+                        <!-- Tombol Form -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Column="0" Content="Simpan" Height="36"
+                                    Background="#16A34A"
+                                    Style="{StaticResource RoundedButtonStyle}"
+                                    Command="{Binding SaveCommand}"/>
+
+                            <Button Grid.Column="2" Content="Reset" Height="36"
+                                    Background="#64748B"
+                                    Style="{StaticResource RoundedButtonStyle}"
+                                    Command="{Binding ResetCommand}"/>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+            <!-- TABEL DAN PENCARIAN (KANAN) -->
+            <Border Grid.Column="2" Background="White" CornerRadius="8" Padding="18" BorderBrush="#E2E8F0" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/> <!-- Search bar -->
+                        <RowDefinition Height="*"/>    <!-- DataGrid -->
+                    </Grid.RowDefinitions>
+
+                    <!-- Search Bar -->
+                    <Grid Grid.Row="0" Margin="0,0,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="8"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="8"/>
+                            <ColumnDefinition Width="90"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Grid.Column="0" Style="{StaticResource FormInputStyle}"
+                                 Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}"
+                                 Tag="Cari berdasarkan NIM, Nama, atau Jurusan..."/>
+
+                        <Button Grid.Column="2" Content="Cari" Height="32"
+                                Background="#0284C7"
+                                Style="{StaticResource RoundedButtonStyle}"
+                                Command="{Binding SearchCommand}"/>
+
+                        <Button Grid.Column="4" Content="Muat Semua" Height="32"
+                                Background="#475569"
+                                Style="{StaticResource RoundedButtonStyle}"
+                                Command="{Binding LoadAllCommand}"/>
+                    </Grid>
+
+                    <!-- DataGrid Mahasiswa -->
+                    <DataGrid Grid.Row="1"
+                              ItemsSource="{Binding Students}"
+                              SelectedItem="{Binding SelectedStudent}"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              SelectionMode="Single"
+                              GridLinesVisibility="Horizontal"
+                              HorizontalGridLinesBrush="#E2E8F0"
+                              BorderThickness="1"
+                              BorderBrush="#E2E8F0"
+                              RowHeight="32"
+                              HeadersVisibility="Column">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="NIM" Binding="{Binding NIM}" Width="105"/>
+                            <DataGridTextColumn Header="Nama Mahasiswa" Binding="{Binding Nama}" Width="1.4*"/>
+                            <DataGridTextColumn Header="Program Studi" Binding="{Binding Jurusan}" Width="1.2*"/>
+                            <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="85"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="1.4*"/>
+                            <DataGridTemplateColumn Header="Aksi" Width="70">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Hapus"
+                                                Height="22"
+                                                Width="52"
+                                                Background="#E11D48"
+                                                FontSize="11"
+                                                Style="{StaticResource RoundedButtonStyle}"
+                                                Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                                CommandParameter="{Binding}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- 4. STATUS BAR -->
+        <Border Grid.Row="3" Background="#E2E8F0" CornerRadius="4" Padding="10,6" Margin="0,12,0,0">
+            <TextBlock Text="{Binding StatusMessage}" FontSize="12" Foreground="#334155"/>
+        </Border>
+    </Grid>
+</Window>
