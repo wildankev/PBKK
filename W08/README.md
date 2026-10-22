@@ -182,24 +182,6 @@ Untuk menjaga fokus implementasi desktop Rich UI pada fase awal ini, batasan sis
 
 ## Soal 3: Poster Infografis Aplikasi TutorMate (1 Halaman)
 
-### A. Struktur dan Komposisi Poster Infografis
-
-Poster infografis satu halaman dirancang secara profesional dengan 10 komponen terstruktur:
-1. **Identitas & Branding:** Logo TutorMate, judul aplikasi, dan moto *"Peer-to-Peer Academic Mentoring Platform"*.
-2. **Problem Statement:** Ringkasan 3 permasalahan utama mahasiswa dalam mencari tutor sebaya.
-3. **Manfaat Solusi:** Nilai tambah bagi mahasiswa peserta, mentor, dan ekosistem kampus.
-4. **Teknologi & Framework:** C#, .NET 8 WPF, ADO.NET, dan Microsoft SQL Server.
-5. **Fitur Unggulan:** Autentikasi peran, katalog mata kuliah, registrasi tutor transparan, dan direktori interaktif.
-6. **Alur Pengguna (User Flow):** Tahapan dari registrasi akun, pemilihan peran, jelajah katalog, pendaftaran tutor, hingga pelaksanaan bimbingan.
-7. **Arsitektur Data Relasional:** Model relasi antara entitas `Users`, `Subjects`, dan `TutorApplications`.
-8. **Tangkapan Layar Antarmuka Kunci:** Visualisasi antarmuka Login, Dashboard Utama, dan Formulir Pendaftaran Tutor.
-9. **Batasan Sistem:** Penegasan ruang lingkup aplikasi pada fase rilis saat ini.
-10. **Identitas Pengembang:** Informasi Kelompok 8 PBKK Kelas C, Departemen Teknik Informatika ITS Surabaya.
-
----
-
-### B. Tangkapan Layar Poster Infografis (1 Halaman)
-
 Berikut adalah visualisasi poster infografis satu halaman untuk aplikasi TutorMate:
 
 ![Poster Infografis TutorMate](assets/poster_infografis.png)
