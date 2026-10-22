@@ -23,9 +23,11 @@ Pada pertemuan ke-7 ini, fokus pengerjaan mencakup:
 
 ## Tautan Dokumen & Repositori
 
-- **Product Requirements Document (PRD):** [Google Docs - PRD TutorMate Kelompok 8](https://docs.google.com/document/d/1uZbdgMPmGHO2TZzvQ9n4VjdaaDinSiKx4SfpOjJBlLM/edit?tab=t.0)
-- **Kode Sumber & File Aplikasi:** [Google Drive - Folder Aplikasi TutorMate](https://drive.google.com/drive/folders/1eZMqNOkawVDxpvyS7hMyJsZZOHTTP1Fv)
-- **Video Dokumentasi & Demo:** [Tautan Video Demo Aplikasi (YouTube / Drive)](https://youtu.be/placeholder_video_tutormate)
+| No | Komponen | Keterangan / Tautan |
+| :-: | :--- | :--- |
+| 1 | **Product Requirements Document (PRD)** | [Google Docs - PRD TutorMate Kelompok 8](https://docs.google.com/document/d/1uZbdgMPmGHO2TZzvQ9n4VjdaaDinSiKx4SfpOjJBlLM/edit?tab=t.0) |
+| 2 | **Kode Sumber Aplikasi** | [GitHub - PBKK/W07](https://github.com/wildankev/PBKK/tree/main/W07) |
+| 3 | **Video Dokumentasi & Demo** | [Tautan Video Demo Aplikasi (YouTube / Drive)](https://youtu.be/placeholder_video_tutormate) |
 
 ---
 
