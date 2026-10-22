@@ -33,8 +33,8 @@ Laporan evaluasi tengah semester ini menyajikan kajian akademis mandiri yang men
 | :-: | :--- | :--- |
 | 1 | **Product Requirements Document (PRD)** | [Google Docs - PRD TutorMate Kelompok 8](https://docs.google.com/document/d/1uZbdgMPmGHO2TZzvQ9n4VjdaaDinSiKx4SfpOjJBlLM/edit?tab=t.0) |
 | 2 | **Kode Sumber Aplikasi (W07)** | [GitHub - PBKK/W07](https://github.com/wildankev/PBKK/tree/main/W07) |
-| 3 | **Unduh Aplikasi Siap Pakai (.exe)** | [TutorMate.exe (Release v1.0)](../W07/release/TutorMate.exe) / [Google Drive Placeholder](https://drive.google.com/file/d/placeholder_tutormate_exe/view) |
-| 4 | **Video Dokumentasi & Demo** | [Tautan Video Demo Aplikasi (YouTube / Drive)](https://youtu.be/placeholder_video_tutormate) |
+| 3 | **Unduh Aplikasi Siap Pakai (.exe)** | [GitHub - TutorMate.exe (Release v1.0)](https://github.com/wildankev/PBKK/blob/main/W07/release/TutorMate.exe) |
+| 4 | **Video Dokumentasi & Demo** | [YouTube - Playlist Demo & Dokumentasi TutorMate](https://www.youtube.com/playlist?list=PLXAd8ywX2Pf4) |
 
 ---
 
