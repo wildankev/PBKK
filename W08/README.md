@@ -8,8 +8,8 @@ Dokumentasi tugas evaluasi tengah semester mandiri mata kuliah **Pemrograman Ber
 
 - **Nama Mahasiswa** : A. Wildan Kevin Assyauqi
 - **NRP**            : 5025241265
-- **Mata Kuliah**    : Pemrograman Berbasis Kerangka Kerja (PBKK) - Kelas C
-- **Sifat Tugas**    : Tugas Mandiri (Evaluasi Tengah Semester)
+- **Mata Kuliah**    : Pemrograman Berbasis Kerangka Kerja - C
+- **Tugas**    : Evaluasi Tengah Semester
 - **Proyek Aplikasi**: TutorMate - Platform Manajemen Tutor Akademik Sebaya (Basis Kolaborasi Kelompok 8)
 - **Anggota Kelompok Proyek (W07)**:
   1. Muhammad Hilman Azhar (NRP: 5025241264)
