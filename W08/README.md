@@ -1,12 +1,29 @@
-# Evaluasi Tengah Semester (ETS) / Pertemuan 8 - TutorMate: Analisis dan Infografis Aplikasi
+# Evaluasi Tengah Semester (ETS) / Pertemuan 8 - Tugas Mandiri: Analisis dan Infografis TutorMate
 
-Dokumentasi tugas evaluasi tengah semester mata kuliah **Pemrograman Berbasis Kerangka Kerja (PBKK) Kelas C - 2026**, Departemen Teknik Informatika, Fakultas Teknologi Elektro dan Informatika Cerdas, Institut Teknologi Sepuluh Nopember Surabaya.
+Dokumentasi tugas evaluasi tengah semester mandiri mata kuliah **Pemrograman Berbasis Kerangka Kerja (PBKK) Kelas C - 2026**, Departemen Teknik Informatika, Fakultas Teknologi Elektro dan Informatika Cerdas, Institut Teknologi Sepuluh Nopember Surabaya.
+
+---
+
+## Identitas Pengerjaan
+
+- **Nama Mahasiswa** : A. Wildan Kevin Assyauqi
+- **NRP**            : 5025241265
+- **Mata Kuliah**    : Pemrograman Berbasis Kerangka Kerja (PBKK) - Kelas C
+- **Sifat Tugas**    : Tugas Mandiri (Evaluasi Tengah Semester)
+- **Proyek Aplikasi**: TutorMate - Platform Manajemen Tutor Akademik Sebaya (Basis Kolaborasi Kelompok 8)
+- **Anggota Kelompok Proyek (W07)**:
+  1. Muhammad Hilman Azhar (NRP: 5025241264)
+  2. A. Wildan Kevin Assyauqi (NRP: 5025241265)
+  3. Al Jad Kaukabudduri Hardianto (NRP: 5025241248)
 
 ---
 
 ## Deskripsi
 
-Laporan ini menyajikan analisis komprehensif terkait komparasi arsitektur aplikasi desktop terhadap platform aplikasi lainnya, rumusan permasalahan akademis dan solusi fitur yang dikembangkan pada proyek **TutorMate - Aplikasi Manajemen Tutor Akademik**, serta poster infografis satu halaman yang merangkum keseluruhan nilai produk, alur kerja, dan arsitektur teknis yang telah dibangun.
+Laporan evaluasi tengah semester ini menyajikan kajian akademis mandiri yang mencakup tiga pilar utama:
+1. **Analisis Komparasi Arsitektur:** Perbandingan mendalam karakteristik aplikasi desktop (WPF / Rich UI) terhadap ekosistem web dan mobile, serta tinjauan kritis mengapa platform desktop tetap esensial dalam lanskap komputasi modern.
+2. **Problem Statement & Fitur Solusi TutorMate:** Pemetaan permasalahan nyata mahasiswa seputar bimbingan akademik sebaya di lingkungan kampus ITS, latar belakang, manfaat, serta definisi spesifikasi fitur solusi dan batasan ruang lingkup aplikasi.
+3. **Poster Infografis 1 Halaman:** Desain representasi visual ringkas satu halaman yang merangkum arsitektur, nilai produk, alur interaksi pengguna, dan teknologi aplikasi TutorMate.
 
 ---
 
@@ -16,7 +33,8 @@ Laporan ini menyajikan analisis komprehensif terkait komparasi arsitektur aplika
 | :-: | :--- | :--- |
 | 1 | **Product Requirements Document (PRD)** | [Google Docs - PRD TutorMate Kelompok 8](https://docs.google.com/document/d/1uZbdgMPmGHO2TZzvQ9n4VjdaaDinSiKx4SfpOjJBlLM/edit?tab=t.0) |
 | 2 | **Kode Sumber Aplikasi (W07)** | [GitHub - PBKK/W07](https://github.com/wildankev/PBKK/tree/main/W07) |
-| 3 | **Video Dokumentasi & Demo** | [Tautan Video Demo Aplikasi (YouTube / Drive)](https://youtu.be/placeholder_video_tutormate) |
+| 3 | **Unduh Aplikasi Siap Pakai (.exe)** | [TutorMate.exe (Release v1.0)](../W07/release/TutorMate.exe) / [Google Drive Placeholder](https://drive.google.com/file/d/placeholder_tutormate_exe/view) |
+| 4 | **Video Dokumentasi & Demo** | [Tautan Video Demo Aplikasi (YouTube / Drive)](https://youtu.be/placeholder_video_tutormate) |
 
 ---
 
@@ -33,7 +51,7 @@ W08/
 
 ## Soal 1: Perbedaan Aplikasi Desktop dengan Aplikasi Lain & Alasan Mengapa Masih Dibutuhkan
 
-### A. Perbandingan Karakteristik Aplikasi (Desktop vs Web vs Mobile)
+### A. Perbandingan Karakteristik (Desktop vs Web vs Mobile)
 
 Aplikasi perangkat lunak modern terbagi ke dalam tiga ekosistem utama: **Aplikasi Desktop**, **Aplikasi Web**, dan **Aplikasi Mobile**. Masing-masing platform memiliki model arsitektur, lingkungan eksekusi, serta trade-off performa yang berbeda:
 
@@ -50,19 +68,19 @@ Aplikasi perangkat lunak modern terbagi ke dalam tiga ekosistem utama: **Aplikas
 
 ### B. Alasan Mengapa Aplikasi Desktop Masih Sangat Dibutuhkan
 
-Meskipun aplikasi web dan mobile berkembang pesat, aplikasi desktop tetap memegang peranan krusial yang tidak dapat digantikan sepenuhnya di berbagai domain industri:
+Meskipun aplikasi web dan mobile berkembang pesat, aplikasi desktop tetap memegang peranan krusial yang tidak dapat digantikan sepenuhnya di berbagai domain industri dan operasional:
 
 1. **Efisiensi Komputasi & Pemrosesan Data Berat (Heavy-Duty Computing):**  
-   Aplikasi desktop dikompilasi secara native atau semi-native (seperti .NET JIT), memungkinkan pemanfaatan multi-threading sejati, SIMD vectorization, dan akselerasi grafis GPU (DirectX pada WPF). Ini sangat vital untuk aplikasi CAD/CAM, editing video, simulasi sains, dan sistem pengolahan tabel data berukuran jutaan baris tanpa lag.
+   Aplikasi desktop dikompilasi secara native atau semi-native (seperti .NET JIT), memungkinkan pemanfaatan multi-threading sejati, SIMD vectorization, dan akselerasi grafis GPU (DirectX pada WPF). Ini sangat vital untuk aplikasi CAD/CAM, editing video, simulasi sains, dan sistem pengolahan tabel data berukuran ribuan hingga jutaan baris tanpa latensi.
 
 2. **Kemandirian Operasional & Keandalan Misi Kritis (Mission-Critical Zero Dependency):**  
-   Di lingkungan fasilitas medis, pabrik manufaktur, sistem kasir (Point of Sale), laboratorium, dan manajemen institusi pendidikan, ketergantungan pada koneksi internet adalah risiko operasional. Aplikasi desktop dapat terus berjalan andal selama listrik menyala tanpa terpengaruh gangguan ISP atau downtime server cloud eksternal.
+   Di lingkungan fasilitas medis, pabrik manufaktur, sistem kasir (Point of Sale), laboratorium, dan administrasi kampus, ketergantungan pada koneksi internet adalah risiko operasional. Aplikasi desktop dapat terus berjalan andal selama listrik menyala tanpa terpengaruh gangguan ISP atau downtime server cloud pihak ketiga.
 
 3. **Keamanan, Kerahasiaan, dan Kedaulatan Data (On-Premise Data Governance):**  
-   Banyak institusi perbankan, militer, dan universitas menerapkan regulasi ketat yang melarang data rahasia (seperti rekam medis atau berkas nilai) diunggah ke internet publik. Aplikasi desktop memungkinkan arsitektur basis data *on-premise* yang terisolasi dalam *Local Area Network* (LAN).
+   Banyak institusi perbankan, militer, dan universitas menerapkan regulasi ketat yang melarang data rahasia (seperti rekam medis atau berkas nilai akademik) diunggah ke internet publik. Aplikasi desktop memungkinkan arsitektur basis data *on-premise* yang terisolasi dalam *Local Area Network* (LAN).
 
 4. **Integrasi Perangkat Keras dan Periferal Khusus:**  
-   Aplikasi desktop dapat dengan mudah berkomunikasi dengan perangkat eksternal melalui port serial, driver perangkat keras, scanner barcode industri, smart card reader, atau modul mikrokontroler.
+   Aplikasi desktop dapat dengan mudah berkomunikasi langsung dengan perangkat eksternal melalui port serial, driver perangkat keras, scanner barcode industri, smart card reader, atau modul mikrokontroler.
 
 5. **Pengalaman Produktivitas Kerja Intensif (Power User Experience):**  
    Pengguna profesional (seperti staf administrasi akademik, akuntan, atau analis data) membutuhkan navigasi cepat berbasis keyboard (*hotkeys*), kemampuan membuka banyak jendela kerja secara bersamaan (*multi-window workspace*), dan tata letak formulir terpadu yang padat informasi (*high-density data entry*).
@@ -71,75 +89,116 @@ Meskipun aplikasi web dan mobile berkembang pesat, aplikasi desktop tetap memega
 
 ## Soal 2: Problem yang Diselesaikan dan Definisi Fitur Solusi pada TutorMate
 
-### A. Problem Statement (Permasalahan yang Dihadapi)
+### A. Latar Belakang & Problem Statement (Permasalahan Nyata)
 
-Berdasarkan analisis kebutuhan mahasiswa di lingkungan kampus dan dokumen PRD TutorMate, ditemukan beberapa permasalahan utama dalam sistem bimbingan belajar sebaya:
+Dalam kehidupan perkuliahan di Departemen Teknik Informatika ITS, mahasiswa menghadapi kurikulum dengan beban komputasi dan logika yang menantang (seperti mata kuliah PBKK, Algoritma Pemrograman, dan Struktur Data). Berdasarkan studi lapangan dan penyusunan PRD pada W07, ditemukan beberapa permasalahan utama:
 
-1. **Fragmentasi dan Ketiadaan Platform Terpusat:**  
-   Selama ini proses pencarian bimbingan akademik antar mahasiswa berjalan secara informal dan sporadis lewat grup chat media sosial (WhatsApp / Telegram) atau kontak personal. Mahasiswa yang membutuhkan tutor kesulitan menemukan siapa rekan seangkatannya yang bersedia dan mampu memberikan bimbingan.
+1. **Fragmentasi Pencarian Tutor di Grup Chat Informal:**  
+   Pencarian bantuan belajar antar mahasiswa selama ini berlangsung sporadis melalui grup WhatsApp angkatan atau pesan personal. Pesan permintaan tolong sering kali tertimbun ribuan obrolan lain, sehingga mahasiswa yang membutuhkan bantuan tidak kunjung mendapatkan mentor.
 
-2. **Asimetri Informasi dan Ketidakpastian Kualifikasi Tutor:**  
-   Calon peserta tutor sering kali merasa ragu terhadap kompetensi mahasiswa yang menawarkan bimbingan karena ketiadaan rekam jejak akademik yang valid (nilai mata kuliah, topik keahlian khusus, atau reputasi akademik).
+2. **Asimetri Informasi dan Keraguan Kualifikasi Mentor:**  
+   Calon peserta tutor sering ragu terhadap kompetensi mahasiswa yang menawarkan bantuan belajar karena tidak ada transparansi riwayat nilai mata kuliah maupun topik spesifik yang benar-benar dikuasai oleh calon tutor tersebut.
 
-3. **Koordinasi Waktu yang Tidak Efisien dan Tabrakan Jadwal:**  
-   Proses tawar-menawar jadwal bimbingan belajar melalui pesan singkat memakan waktu lama, rawan salah paham, dan kerap berujung pada pembatalan sepihak karena jadwal kuliah yang bertabrakan.
+3. **Koordinasi Waktu yang Tidak Efisien & Tabrakan Jadwal Kuliah:**  
+   Proses tawar-menawar jadwal bimbingan belajar melalui pesan singkat memakan waktu lama, rawan salah paham, dan kerap berujung pada pembatalan sepihak karena jadwal kuliah yang saling bentrok.
 
 4. **Ketiadaan Katalog Mata Kuliah yang Terstandarisasi:**  
-   Tidak ada klasifikasi jelas mengenai mata kuliah apa saja yang sedang dibuka untuk bimbingan, sehingga kebutuhan belajar mahasiswa pada mata kuliah krusial (seperti PBKK, PBO, atau Struktur Data) sering tidak terfasilitasi.
+   Tidak tersedianya wadah direktori resmi yang mengelompokkan mata kuliah apa saja yang sedang dibuka untuk bimbingan, sehingga kebutuhan belajar mahasiswa pada mata kuliah krusial sering tidak terfasilitasi.
 
 ---
 
-### B. Definisi Fitur Solusi pada Aplikasi TutorMate
+### B. Manfaat Aplikasi TutorMate
 
-Untuk menyelesaikan permasalahan di atas, aplikasi **TutorMate** menyediakan solusi terintegrasi melalui fitur-fitur berikut:
+Aplikasi **TutorMate** dirancang untuk menghadirkan ekosistem pembelajaran sebaya (*peer-assisted learning*) yang terstruktur:
+
+- **Bagi Mahasiswa Pencari Bimbingan (Peserta / Mentee):**
+  - Menemukan mentor yang tepat secara cepat melalui katalog terpusat.
+  - Mendapatkan kepastian kualifikasi mentor melalui transparansi nilai kelulusan mata kuliah dan topik keahlian.
+  - Menghemat waktu koordinasi jadwal bimbingan belajar.
+
+- **Bagi Mahasiswa Pengajar (Mentor / Tutor):**
+  - Memperoleh wadah resmi untuk mengasah kemampuan komunikasi dan penguasaan materi akademik.
+  - Membangun portofolio pengajaran dan reputasi akademik di lingkungan mahasiswa.
+  - Fleksibilitas menentukan jadwal luang bimbingan sesuai preferensi pribadi.
+
+- **Bagi Pengelola Akademik & Civitas Kampus:**
+  - Mendorong terciptanya budaya belajar kolaboratif antar mahasiswa (*peer learning culture*).
+  - Membantu menekan angka ketidaklulusan pada mata kuliah berbobot komputasi tinggi.
+  - Menyediakan basis data riwayat kegiatan bimbingan akademik yang tertata rapi.
+
+---
+
+### C. Pemetaan Masalah ke Fitur Solusi
 
 ```text
 +------------------------------------------+        +-----------------------------------------------+
 |           PERMASALAHAN NYATA             | -----> |             FITUR SOLUSI TUTORMATE            |
 +------------------------------------------+        +-----------------------------------------------+
-| 1. Pencarian tutor terpencar di chat WA  | -----> | FR-01: Direktori Terpusat & Katalog Terpadu   |
-| 2. Ragu akan kompetensi/nilai tutor      | -----> | FR-02: Pendataan Riwayat Nilai & Topik Ahli   |
-| 3. Jadwal bimbingan bentrok/tidak pasti  | -----> | FR-03: Pencatatan Hari & Waktu Bimbingan      |
-| 4. Akses tidak teratur antar pengguna    | -----> | FR-04: Autentikasi Role-Based (Peserta/Mentor)|
+| 1. Pencarian tutor terpencar di chat WA  | -----> | FR-01: Katalog Terpusat & Direktori Tutor     |
+| 2. Ragu akan kompetensi/nilai tutor      | -----> | FR-02: Transparansi Nilai & Topik Ahli        |
+| 3. Jadwal bimbingan bentrok/tidak pasti  | -----> | FR-03: Pencatatan Preferensi Hari & Jadwal    |
+| 4. Hak akses tidak teratur antar user    | -----> | FR-04: Autentikasi Role-Based (Peserta/Mentor)|
 | 5. Sulit mengusulkan mata kuliah baru    | -----> | FR-05: Modul Penambahan Katalog Mata Kuliah   |
 +------------------------------------------+        +-----------------------------------------------+
 ```
 
-1. **Sistem Autentikasi dan Kontrol Akses Berbasis Peran (Role-Based Authentication):**  
-   - *Solusi untuk:* Membedakan hak akses dan alur kerja antara mahasiswa yang mencari bimbingan (*Peserta*) dan mahasiswa yang memberikan bimbingan (*Mentor*).
-   - *Detail Fitur:* Formulir Registrasi dan Login terenkripsi dengan validasi keunikan NIM di basis data, memastikan identitas mahasiswa valid dan terproteksi.
+---
 
-2. **Katalog Mata Kuliah Terstruktur (Subject Catalog):**  
-   - *Solusi untuk:* Menyediakan standardisasi daftar mata kuliah yang memerlukan bantuan tutor sebaya.
-   - *Detail Fitur:* Menampilkan tabel mata kuliah lengkap dengan kode mata kuliah resmi (misal: `IF184501`), nama mata kuliah, dan deskripsi cakupan kompetensinya.
+### D. Definisi Fitur Solusi (Ruang Lingkup Rilis / In-Scope)
 
-3. **Pendataan Kualifikasi dan Verifikasi Tutor (Tutor Qualification & Application):**  
-   - *Solusi untuk:* Mengatasi asimetri informasi dan menjamin transparansi kompetensi calon tutor.
-   - *Detail Fitur:* Mahasiswa yang mendaftar menjadi tutor wajib mencantumkan nilai huruf kelulusan mata kuliah (misal: Nilai `A`), topik spesifik yang dikuasai (misal: *WPF, MVVM, dan C# .NET*), dan ketersediaan jadwal bimbingan.
+Berdasarkan implementasi kode pada folder `W07`, fitur solusi yang disediakan mencakup:
 
-4. **Direktori Terbuka Tutor Terdaftar (Active Tutor Directory):**  
-   - *Solusi untuk:* Memudahkan mahasiswa menemukan tutor yang sesuai dengan kebutuhan mata kuliah dan kecocokan jadwal.
-   - *Detail Fitur:* Menampilkan ringkasan seluruh tutor aktif dalam tabel `DataGrid` interaktif yang menggabungkan data profil pengguna, mata kuliah bimbingan, dan hari bimbingan secara transparan.
+1. **Sistem Autentikasi & Kontrol Akses Berbasis Peran (FR-01):**  
+   - *Solusi untuk:* Memisahkan alur kerja pengguna berdasarkan peran (*Peserta* vs *Mentor*).
+   - *Implementasi:* Window Login (`LoginWindow.xaml`) dan Registrasi (`RegisterWindow.xaml`) dengan validasi keunikan NIM, enkripsi kata sandi, dan penyimpanan di tabel `dbo.Users`.
 
-5. **Manajemen Pengusulan Mata Kuliah Baru oleh Mentor (Course Management):**  
-   - *Solusi untuk:* Memastikan katalog bimbingan selalu berkembang mengikuti kebutuhan kurikulum semester aktif.
-   - *Detail Fitur:* Khusus bagi pengguna dengan peran *Mentor*, sistem menyediakan formulir penambahan mata kuliah baru yang langsung terintegrasi ke basis data SQL Server.
+2. **Katalog Mata Kuliah Terstruktur (FR-02):**  
+   - *Solusi untuk:* Standardisasi daftar mata kuliah bimbingan agar mahasiswa tidak bingung mencari mata kuliah yang dibuka.
+   - *Implementasi:* DataGrid katalog interaktif pada `MainWindow.xaml` yang membaca data kode MK, nama mata kuliah, dan deskripsi dari tabel `dbo.Subjects`.
+
+3. **Formulir Pengajuan & Registrasi Tutor Terbuka (FR-03):**  
+   - *Solusi untuk:* Menyelesaikan asimetri informasi dan memverifikasi kualifikasi calon tutor.
+   - *Implementasi:* Formulir pendaftaran tutor dengan input nilai huruf kelulusan mata kuliah (misal: Nilai `A`), topik spesifik yang dikuasai (misal: *WPF, MVVM, dan C# .NET*), serta pilihan hari bimbingan ke tabel `dbo.TutorApplications`.
+
+4. **Direktori Terbuka Tutor Aktif (FR-04):**  
+   - *Solusi untuk:* Memudahkan mahasiswa melihat siapa saja tutor yang tersedia beserta jadwal dan topik keahliannya.
+   - *Implementasi:* Tampilan DataGrid utama yang menggabungkan relasi SQL antara `Users`, `Subjects`, dan `TutorApplications` secara instan dan bebas latensi.
+
+5. **Modul Penambahan Mata Kuliah Baru oleh Mentor (FR-05):**  
+   - *Solusi untuk:* Memastikan katalog bimbingan adaptif terhadap kebutuhan kurikulum baru.
+   - *Implementasi:* Formulir khusus pengguna berstatus *Mentor* untuk mendaftarkan mata kuliah baru langsung ke basis data SQL Server.
+
+---
+
+### E. Batasan Aplikasi (Di Luar Ruang Lingkup / Out-of-Scope)
+
+Untuk menjaga fokus implementasi desktop Rich UI pada fase awal ini, batasan sistem ditetapkan sebagai berikut:
+- **Transaksi Pembayaran Otomatis:** Tidak mencakup integrasi *payment gateway* daring (layanan tutor bersifat sukarela atau diselesaikan langsung antarmahasiswa secara tunai).
+- **Aplikasi Web / Mobile Publik:** Aplikasi difokuskan secara eksklusif sebagai aplikasi desktop Windows dengan WPF dan .NET 8.
+- **Panggilan Video Terintegrasi:** Sesi bimbingan tatap muka diselenggarakan secara langsung di ruang belajar kampus atau platform meeting eksternal.
+- **Cakupan Data Wilayah:** Dikhususkan untuk lingkup mahasiswa Departemen Teknik Informatika ITS.
 
 ---
 
 ## Soal 3: Poster Infografis Aplikasi TutorMate (1 Halaman)
 
-Poster infografis telah dirancang sebagai representasi visual satu halaman yang memuat:
-1. **Identitas & Branding Produk:** Nama produk **TutorMate**, logo, dan moto *"Peer-to-Peer Academic Mentoring Platform"*.
-2. **Problem & Solusi:** Latar belakang masalah mahasiswa dan ringkasan solusi sistemik yang ditawarkan.
-3. **Fitur Unggulan:** Autentikasi berbasis peran, katalog mata kuliah, registrasi tutor transparan, dan dashboard bimbingan.
-4. **Arsitektur Teknologi:** C#, .NET 8 WPF, ADO.NET, dan Microsoft SQL Server dengan konsep *Rich UI*.
-5. **Alur Pengguna (User Flow):** Langkah registrasi, login, penjelajahan katalog, pengajuan tutor, hingga pelaksanaan bimbingan.
-6. **Informasi Tim Pengembang:** Kelompok 8 - Teknik Informatika ITS 2026.
+### A. Struktur dan Komposisi Poster Infografis
+
+Poster infografis satu halaman dirancang secara profesional dengan 10 komponen terstruktur:
+1. **Identitas & Branding:** Logo TutorMate, judul aplikasi, dan moto *"Peer-to-Peer Academic Mentoring Platform"*.
+2. **Problem Statement:** Ringkasan 3 permasalahan utama mahasiswa dalam mencari tutor sebaya.
+3. **Manfaat Solusi:** Nilai tambah bagi mahasiswa peserta, mentor, dan ekosistem kampus.
+4. **Teknologi & Framework:** C#, .NET 8 WPF, ADO.NET, dan Microsoft SQL Server.
+5. **Fitur Unggulan:** Autentikasi peran, katalog mata kuliah, registrasi tutor transparan, dan direktori interaktif.
+6. **Alur Pengguna (User Flow):** Tahapan dari registrasi akun, pemilihan peran, jelajah katalog, pendaftaran tutor, hingga pelaksanaan bimbingan.
+7. **Arsitektur Data Relasional:** Model relasi antara entitas `Users`, `Subjects`, dan `TutorApplications`.
+8. **Tangkapan Layar Antarmuka Kunci:** Visualisasi antarmuka Login, Dashboard Utama, dan Formulir Pendaftaran Tutor.
+9. **Batasan Sistem:** Penegasan ruang lingkup aplikasi pada fase rilis saat ini.
+10. **Identitas Pengembang:** Informasi Kelompok 8 PBKK Kelas C, Departemen Teknik Informatika ITS Surabaya.
 
 ---
 
-### Tangkapan Layar Poster Infografis
+### B. Tangkapan Layar Poster Infografis (1 Halaman)
 
 Berikut adalah visualisasi poster infografis satu halaman untuk aplikasi TutorMate:
 
@@ -149,12 +208,24 @@ Terimakasih.
 
 ---
 
-## Identitas Kelompok
-- **Mata Kuliah** : Pemrograman Berbasis Kerangka Kerja (C)
-- **Tugas**       : Evaluasi Tengah Semester (ETS) / Pertemuan 8
-- **Kelompok**    : 8 (Delapan)
-- **Anggota Kelompok**:
-  1. Muhammad Hilman Azhar (NRP: 5025241264)
-  2. A. Wildan Kevin Assyauqi (NRP: 5025241265)
-  3. Al Jad Kaukabudduri Hardianto (NRP: 5025241248)
-- **Departemen**  : Teknik Informatika, Fakultas Teknologi Elektro dan Informatika Cerdas, Institut Teknologi Sepuluh Nopember
+## Dokumentasi Tampilan Antarmuka Aplikasi TutorMate
+
+Sebagai referensi implementasi dari aplikasi yang telah dibangun pada modul `W07`, berikut adalah ringkasan visual antarmuka sistem:
+
+1. **Modul Autentikasi Pengguna:**
+   - Antarmuka **Login** (`LoginWindow.xaml`) untuk verifikasi identitas NIM dan kata sandi.
+   - Antarmuka **Registrasi Akun Baru** (`RegisterWindow.xaml`) dengan penentuan peran awal (*Peserta* atau *Mentor*).
+
+2. **Modul Dashboard Utama & Direktori Tutor:**
+   - Tampilan antarmuka utama (`MainWindow.xaml`) yang dilengkapi navigasi sidebar modern, ringkasan kartu data, serta tabel *DataGrid* interaktif untuk penjelajahan tutor aktif.
+
+3. **Modul Katalog Mata Kuliah & Pengajuan Tutor:**
+   - Halaman katalog daftar mata kuliah aktif lengkap dengan kode mata kuliah resmi.
+   - Formulir pendaftaran tutor baru dengan pencatatan nilai huruf, topik keahlian, dan jadwal luang.
+   - Formulir penambahan mata kuliah baru khusus bagi akun berstatus *Mentor*.
+
+---
+
+## Kesimpulan
+
+Aplikasi **TutorMate** membuktikan keunggulan arsitektur desktop Rich UI berbasis WPF dan .NET 8 dalam menyediakan aplikasi yang responsif, berlatensi rendah, serta beroperasi secara andal (*offline-first*) di atas basis data SQL Server lokal. Melalui penyelesaian masalah pencarian tutor sebaya yang terstruktur dan transparan, TutorMate mampu menjadi sarana akselerasi belajar kolaboratif yang efektif bagi mahasiswa di lingkungan kampus.
