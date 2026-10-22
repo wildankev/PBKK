@@ -205,9 +205,3 @@ Sebagai referensi implementasi dari aplikasi yang telah dibangun pada modul `W07
    - Halaman katalog daftar mata kuliah aktif lengkap dengan kode mata kuliah resmi.
    - Formulir pendaftaran tutor baru dengan pencatatan nilai huruf, topik keahlian, dan jadwal luang.
    - Formulir penambahan mata kuliah baru khusus bagi akun berstatus *Mentor*.
-
----
-
-## Kesimpulan
-
-Aplikasi **TutorMate** membuktikan keunggulan arsitektur desktop Rich UI berbasis WPF dan .NET 8 dalam menyediakan aplikasi yang responsif, berlatensi rendah, serta beroperasi secara andal (*offline-first*) di atas basis data SQL Server lokal. Melalui penyelesaian masalah pencarian tutor sebaya yang terstruktur dan transparan, TutorMate mampu menjadi sarana akselerasi belajar kolaboratif yang efektif bagi mahasiswa di lingkungan kampus.
