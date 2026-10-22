@@ -43,7 +43,7 @@ Laporan evaluasi tengah semester ini menyajikan kajian akademis mandiri yang men
 ```text
 W08/
 ├── assets/
-│   └── poster_infografis.png
+│   └── poster.png
 └── README.md
 ```
 
@@ -184,7 +184,7 @@ Untuk menjaga fokus implementasi desktop Rich UI pada fase awal ini, batasan sis
 
 Berikut adalah visualisasi poster infografis satu halaman untuk aplikasi TutorMate:
 
-![Poster Infografis TutorMate](assets/poster_infografis.png)
+![Poster Infografis TutorMate](assets/poster.png)
 
 Terimakasih.
 
