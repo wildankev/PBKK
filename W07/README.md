@@ -68,7 +68,6 @@ W07/
 │   ├── MainWindow.xaml
 │   ├── MainWindow.xaml.cs
 │   └── TutorMate.csproj
-├── PRD_TutorMate.docx
 ├── TutorMate.slnx
 ├── TutorMate.sql
 └── README.md
@@ -84,7 +83,6 @@ W07/
 
 Dokumen PRD lengkap dapat diakses melalui tautan berikut:
 - **Tautan Google Docs:** [Google Docs - PRD TutorMate Kelompok 8](https://docs.google.com/document/d/1uZbdgMPmGHO2TZzvQ9n4VjdaaDinSiKx4SfpOjJBlLM/edit?tab=t.0)
-- **Dokumen Word Lokal:** [PRD_TutorMate.docx](PRD_TutorMate.docx)
 
 ### 1. Peran Pengguna dan Hak Akses
 | Peran | Deskripsi | Hak Akses Utama |
